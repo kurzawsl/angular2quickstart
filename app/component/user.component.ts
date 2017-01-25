@@ -4,14 +4,22 @@ import { Component } from '@angular/core';
   selector: 'user',
   template: `<h1>Hello {{name}}</h1>
           <p><strong>Email:</strong> {{email}}</p>
-          <p><strong>Address:</strong> {{address.street}} {{address.city}} {{address.state}}</p>`,
+          <p><strong>Address:</strong> {{address.street}} {{address.city}} {{address.state}}</p>
+          <h3>Hobbies</h3>
+          <ul>
+            <li *ngFor="let hobby of hobbies">
+            {{hobby}}
+            </li>
+          </ul>
+          `,
 })
 export class UserComponent {
   name: string;
   email: string;
   address: Address;
+  hobbies: string[];
 
-  constructor(){
+  constructor() {
     this.name = 'John Doe';
     this.email = 'john.doe@gmail.com';
     this.address = {
@@ -19,11 +27,12 @@ export class UserComponent {
       city: 'Boston',
       state: 'PA'
     }
+    this.hobbies = ['Music', 'Movies', 'Sports'];
   }
 
 }
 
-interface Address{
+interface Address {
   street: string;
   city: string;
   state: string;

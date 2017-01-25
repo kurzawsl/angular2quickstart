@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PostsService } from '../services/posts.service';
 
 @Component({
   selector: 'user',
@@ -33,6 +34,7 @@ import { Component } from '@angular/core';
           </form>
 
           `,
+    providers: [PostsService]
 })
 export class UserComponent {
   name: string;
@@ -41,7 +43,7 @@ export class UserComponent {
   hobbies: string[];
   showHobbies: boolean;
 
-  constructor() {
+  constructor(private postsService: PostsService) {
     this.name = 'John Doe';
     this.email = 'john.doe@gmail.com';
     this.address = {
@@ -51,6 +53,9 @@ export class UserComponent {
     }
     this.hobbies = ['Music', 'Movies', 'Sports'];
     this.showHobbies = false;
+    this.postsService.getPosts().subscribe(posts => {
+      console.log(posts);
+    });
   }
 
   toggleHobbies(){

@@ -2,14 +2,13 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'my-app',
-  template: `<user></user>`,
+  template: `
+  <ul>
+    <li><a routerLink="/">Home</a></li>
+    <li><a routerLink="about">About</a></li>
+  </ul>
+  <router-outlet></router-outlet>`,
 })
 export class AppComponent {
-  name = 'John Doe';
-  email = 'john.doe@gmail.com';
-  address = {
-    street: '12 Main street',
-    city: 'Boston',
-    state: 'PA'
-  }
+
 }
